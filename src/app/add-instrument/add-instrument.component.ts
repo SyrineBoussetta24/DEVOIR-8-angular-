@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { Instrument } from '../model/instrument.model';
 import { InstrumentService } from '../services/instrument.service';
+import { ActivatedRoute, Router } from '@angular/router';
+import { Type } from '../model/type.model';
 
 @Component({
   selector: 'app-add-instrument',
@@ -8,10 +10,20 @@ import { InstrumentService } from '../services/instrument.service';
 })
 export class AddInstrumentComponent {
   newInstrument = new Instrument();
-
-  constructor(private instrumentService: InstrumentService) { }
+  types! : Type[];
+  newIdTyp! : number;
+  newType! : Type;
+  constructor(private instrumentService: InstrumentService,
+    private activatedRoute: ActivatedRoute,
+  private router :Router,)
+   { }
+   ngOnInit() :void {
+    this.types = this.instrumentService.listeTypes();
+    }
   addInstrument(){
-    //console.log(this.newInstrument);
+    this.newType=this.instrumentService.consulterType(this.newIdTyp);
+    this.newInstrument.type=this.newType;
     this.instrumentService.ajouterInstrument(this.newInstrument);
+    this.router.navigate(['instruments']);
     }
 }

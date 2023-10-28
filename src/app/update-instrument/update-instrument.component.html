@@ -24,6 +24,15 @@
 (ngModelChange)=" currentInstrument.dateCreation= $event" name="dateCreation"
  class="form-control">
 </div>
+
+<div class="col-sm-4 col-md-4 col-lg-4">
+  <select class="form-control form-control-lg" id="idTyp" name="idTyp"
+  [(ngModel)]="updatedTypId">
+  <option *ngFor="let typ of types" [value]="typ.idTyp" >
+  {{typ.nomTyp}}
+  </option>
+  </select>
+  </div>
 <div class="mt-2">
 <button type="submit" (click)="updateInstrument()" class="btn btn-success">Modifer</button>
 </div>
