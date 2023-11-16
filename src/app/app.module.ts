@@ -7,13 +7,17 @@ import { InstrumentsComponent } from './instruments/instruments.component';
 import { AddInstrumentComponent } from './add-instrument/add-instrument.component';
 import { FormsModule } from '@angular/forms';
 import { UpdateInstrumentComponent } from './update-instrument/update-instrument.component';
+import { LoginComponent } from './login/login.component';
+import { ForbiddenComponent } from './forbidden/forbidden.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     InstrumentsComponent,
     AddInstrumentComponent,
-    UpdateInstrumentComponent
+    UpdateInstrumentComponent,
+    LoginComponent,
+    ForbiddenComponent
   ],
   imports: [
     BrowserModule,
