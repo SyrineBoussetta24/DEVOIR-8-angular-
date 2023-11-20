@@ -9,6 +9,7 @@ import { FormsModule } from '@angular/forms';
 import { UpdateInstrumentComponent } from './update-instrument/update-instrument.component';
 import { LoginComponent } from './login/login.component';
 import { ForbiddenComponent } from './forbidden/forbidden.component';
+import { RechercheParTypeComponent } from './recherche-par-type/recherche-par-type.component';
 
 @NgModule({
   declarations: [
@@ -17,7 +18,8 @@ import { ForbiddenComponent } from './forbidden/forbidden.component';
     AddInstrumentComponent,
     UpdateInstrumentComponent,
     LoginComponent,
-    ForbiddenComponent
+    ForbiddenComponent,
+    RechercheParTypeComponent
   ],
   imports: [
     BrowserModule,

@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { Instrument } from '../model/instrument.model';
 import { Router } from '@angular/router';
 import { Type } from '../model/type.model';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -10,6 +11,8 @@ export class InstrumentService {
   instruments : Instrument[]; //un tableau d'instrument
   instrument! : Instrument;
   types : Type[];
+  apiURL: any;
+  http: any;
   constructor (private router :Router,) {
     this.types = [ {idTyp : 1, nomTyp : "instruments à cordes"},
 {idTyp : 2, nomTyp : "instruments à vent"}, {idTyp : 3, nomTyp : "instruments à percussion"}];
@@ -71,5 +74,10 @@ export class InstrumentService {
             consulterType(id:number): Type{
             return this.types.find(typ => typ.idTyp == id)!;
             }
+            rechercherParType(idTyp: number):Observable< Instrument[]> {
+              const url = `${this.apiURL}/intrstyp/${idTyp}`;
+              return this.http.get<Instrument[]>(url);
+              }
+
 
 }
