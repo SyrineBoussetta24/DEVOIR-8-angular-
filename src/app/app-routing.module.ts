@@ -8,6 +8,7 @@ import { LoginComponent } from './login/login.component';
 import { ForbiddenComponent } from './forbidden/forbidden.component';
 import { InstrumentGuard } from './instrument.guard';
 import { RechercheParTypeComponent } from './recherche-par-type/recherche-par-type.component';
+import { RechercheParNomComponent } from './recherche-par-nom/recherche-par-nom.component';
 const routes: Routes = [
   {path: "instruments", component : InstrumentsComponent},
   {path: "add-instrument", component : AddInstrumentComponent, canActivate:[InstrumentGuard]},
@@ -15,7 +16,9 @@ const routes: Routes = [
   {path: "updateInstrument/:id", component: UpdateInstrumentComponent},
   {path: 'login', component: LoginComponent},
   {path: 'app-forbidden', component: ForbiddenComponent},
-  {path: "rechercheParType", component : RechercheParTypeComponent}
+  {path: "rechercheParType", component : RechercheParTypeComponent},
+  {path: "rechercheParNom", component : RechercheParNomComponent}
+
 
 
 

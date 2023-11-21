@@ -1,12 +1,19 @@
 <div class="container">
-  <div class="col-sm-4 col-md-4 col-lg-4 mb-4">
-    <label>Types </label>
-    <select class="form-control form-control-lg" id="selectedTypeId" name="selectedTypeId" [(ngModel)]="selectedTypeId" (change)="onChange()">
-      <option *ngFor="let typ of types" value="{{typ.idTyp}}">
-        {{typ.nomTyp}}
-      </option>
-    </select>
-  </div>
+
+  <form class="form-inline">
+    <div class="form-group mx-sm-3 mb-2 mt-2 ">
+    <label>Nom Instrument en tapant</label>
+    <input #nom [(ngModel)]="searchTerm" name="searchTerm" class="form-control" >
+    </div>
+    </form>
+  <!-- <form class="form-inline">
+    <div class="form-group mx-sm-3 mb-2 mt-2 ">
+    <label>Nom Instrument </label>
+    <input type="text" class="form-control" [(ngModel)]="nomInstrument" name="nomInstrument" class="form-control">
+    <button type="submit" (click)="rechercherInstrs()" class="btn btn-primary mb-2 ml-2">Rechercher</button>
+    </div>
+    </form> -->
+
   <div class="card shadow mb-4">
     <div class="card-body">
       <table class="table table-striped">
@@ -17,7 +24,7 @@
           <th>Date Création</th>
           <th>Type</th>
         </tr>
-        <tbody *ngFor="let instrument of instruments">
+        <tbody *ngFor="let instrument of instruments | searchFilter: searchTerm ">
           <tr>
             <td>{{instrument.idInstrument}}</td>
             <td>{{instrument.nomInstrument}}</td>
