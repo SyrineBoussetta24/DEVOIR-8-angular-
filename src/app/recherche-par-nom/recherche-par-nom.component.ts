@@ -8,23 +8,16 @@ import { Component } from '@angular/core';
 })
 export class RechercheParNomComponent {
   nomInstrument!: string;
-  instruments: Instrument[] = [];
-  searchTerm!: string;
+  searchTerm: string = '';
   allInstruments: Instrument[] = [];
+  Instruments: Instrument[] = [];
+
 
   constructor(private instrumentService: InstrumentService) {}
 
   ngOnInit(): void {
-    this.allInstruments=this.instrumentService.listeInstruments() ;
-     }
-
-  rechercherInstrs() {
-    this.allInstruments=this.instrumentService.rechercherParNom(this.nomInstrument);
+    this.Instruments = this.instrumentService.listeInstruments();
   }
 
-  onKeyUp(filterText: string) {
-    this.instruments = this.allInstruments.filter(item =>
-      item.nomInstrument!.toLowerCase().includes(filterText)
-    );
-  }
+
 }

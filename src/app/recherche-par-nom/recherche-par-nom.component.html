@@ -1,13 +1,13 @@
-<div class="container">
+<div class="container mt-5">
 
   <form class="form-inline">
     <div class="form-group mx-sm-3 mb-2 mt-2 ">
     <label>Nom Instrument en tapant</label>
-    <input #nom [(ngModel)]="searchTerm" name="searchTerm" class="form-control" >
-    </div>
+    <input  [(ngModel)]="searchTerm" name="searchTerm" class="form-control ml-5" placeholder="Search Instrument">
+  </div>
     </form>
 
-  
+
   <!-- <form class="form-inline">
     <div class="form-group mx-sm-3 mb-2 mt-2 ">
     <label>Nom Instrument </label>
@@ -16,7 +16,7 @@
     </div>
     </form> -->
 
-  <div class="card shadow mb-4">
+  <div class="card shadow mt-5">
     <div class="card-body">
       <table class="table table-striped">
         <tr>
@@ -26,7 +26,7 @@
           <th>Date Création</th>
           <th>Type</th>
         </tr>
-        <tbody *ngFor="let instrument of instruments | searchFilter: searchTerm ">
+        <tbody *ngFor="let instrument of Instruments | searchFilter: searchTerm ">
           <tr>
             <td>{{instrument.idInstrument}}</td>
             <td>{{instrument.nomInstrument}}</td>
