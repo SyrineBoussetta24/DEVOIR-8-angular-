@@ -8,23 +8,32 @@ import { Component, OnInit } from '@angular/core';
   templateUrl: './recherche-par-type.component.html',
 })
 export class RechercheParTypeComponent implements OnInit {
-  instruments! : Instrument[];
-  types! : Type[];
-  selectedTypeId! : number ;
-  constructor(private instrumentService : InstrumentService){ }
+  instruments: Instrument[] = [];
+  types: Type[] = [];
+  IdType!: number;
+
+  constructor(private instrumentService: InstrumentService) {}
 
   ngOnInit(): void {
-    this.types = this.instrumentService.listeTypes();
-    this.instruments = this.instrumentService.listeInstruments();
+    this.instrumentService.listetypes().subscribe((typs) => {
+      this.types = typs._embedded.types;
+      console.log(typs);
+    });
 
+    this.loadAllInstruments();
+  }
+  private loadAllInstruments(): void {
+    this.instrumentService.listeInstrument().subscribe((instruments) => {
+      this.instruments = instruments;
+    });
   }
 
-  onChange(): void {
-    console.log("Selected Type ID:", this.selectedTypeId);
-    if (this.selectedTypeId) {
-      this.instruments = this.instrumentService.rechercherParType(this.selectedTypeId);
-      console.log("Filtered Instruments:", this.instruments);
 
-}
-}
+  onChange(): void {
+    if (this.IdType) {
+      this.instrumentService.rechercherParType(this.IdType).subscribe((instr) => {
+        this.instruments = instr;
+      });
+    }
+  }
 }

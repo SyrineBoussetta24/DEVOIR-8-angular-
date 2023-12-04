@@ -26,7 +26,7 @@
           <th>Date Création</th>
           <th>Type</th>
         </tr>
-        <tbody *ngFor="let instrument of Instruments | searchFilter: searchTerm ">
+        <tbody *ngFor="let instrument of instruments | searchFilter: searchTerm ">
           <tr>
             <td>{{instrument.idInstrument}}</td>
             <td>{{instrument.nomInstrument}}</td>

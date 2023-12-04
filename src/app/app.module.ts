@@ -12,6 +12,9 @@ import { ForbiddenComponent } from './forbidden/forbidden.component';
 import { RechercheParTypeComponent } from './recherche-par-type/recherche-par-type.component';
 import { RechercheParNomComponent } from './recherche-par-nom/recherche-par-nom.component';
 import { SearchFilterPipe } from './search-filter.pipe';
+import { HttpClientModule } from '@angular/common/http';
+import { AuthService } from './services/auth.service';
+
 
 @NgModule({
   declarations: [
@@ -28,9 +31,10 @@ import { SearchFilterPipe } from './search-filter.pipe';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    FormsModule
+    FormsModule,
+    HttpClientModule,
   ],
-  providers: [],
+  providers: [ AuthService,],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

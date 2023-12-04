@@ -9,7 +9,7 @@
   <td>{{instrument.nomInstrument}}</td>
   <td>{{instrument.prixInstrument}}</td>
   <td>{{instrument.dateCreation | date:'dd/MM/yyyy'}}</td>
-  <td>{{instrument.type.nomTyp}}</td>
+  <td>{{instrument?.type?.nomTyp}}</td>
 
   <td><a *ngIf="authService.isAdmin()" class="btn btn-danger" (click)="supprimerInstrument(instrument)">Supprimer</a></td>
   <td><a *ngIf="authService.isAdmin()" class="btn btn-success" [routerLink]="['/updateInstrument',instrument.idInstrument]">Modifier</a></td>

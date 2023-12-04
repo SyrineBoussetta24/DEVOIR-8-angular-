@@ -1,11 +1,12 @@
 <div class="container">
   <div class="col-sm-4 col-md-4 col-lg-4 mb-4">
     <label>Types </label>
-    <select class="form-control form-control-lg" id="selectedTypeId" name="selectedTypeId" [(ngModel)]="selectedTypeId" (change)="onChange()">
-      <option *ngFor="let typ of types" value="{{typ.idTyp}}">
-        {{typ.nomTyp}}
-      </option>
-    </select>
+    <select class="form-control form-control-lg"   id="idTyp" name="idTyp"
+    [(ngModel)]="IdType" (change)="onChange()">
+     <option *ngFor="let typ of types" value="{{typ.idTyp}}">
+          {{typ.nomTyp}}
+    </option>
+</select>
   </div>
   <div class="card shadow mb-4">
     <div class="card-body">

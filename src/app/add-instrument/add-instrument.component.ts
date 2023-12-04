@@ -10,20 +10,32 @@ import { Type } from '../model/type.model';
 })
 export class AddInstrumentComponent {
   newInstrument = new Instrument();
-  types! : Type[];
-  newIdTyp! : number;
-  newType! : Type;
-  constructor(private instrumentService: InstrumentService,
-    private activatedRoute: ActivatedRoute,
-  private router :Router,)
-   { }
-   ngOnInit() :void {
-    this.types = this.instrumentService.listeTypes();
+  types!: Type[];
+  newIdTyp!: number;
+  newType!: Type;
+  constructor(
+    private instrumentService: InstrumentService,
+    private router: Router
+  ) {}
+  ngOnInit(): void {
+    //this.types = this.instrumentService.listeTypes();
+    this.instrumentService.listetypes().subscribe((typs) => {
+      this.types = typs._embedded.types;
+      console.log(typs);
+    });
+  }
+  addInstrument() {
+    if (!this.types || this.types.length === 0) {
+      console.error("Types are not yet loaded. Please wait.");
+      return;
     }
-  addInstrument(){
-    this.newType=this.instrumentService.consulterType(this.newIdTyp);
-    this.newInstrument.type=this.newType;
-    this.instrumentService.ajouterInstrument(this.newInstrument);
-    this.router.navigate(['instruments']);
-    }
+
+    this.newInstrument.type = this.types.find((typ) => typ.idTyp == this.newIdTyp)!;
+    this.instrumentService
+      .ajouterInstrument(this.newInstrument)
+      .subscribe((instr) => {
+        console.log(instr);
+        this.router.navigate(['instruments']);
+      });
+  }
 }
