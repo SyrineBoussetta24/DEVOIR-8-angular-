@@ -38,11 +38,8 @@ export class InstrumentService {
   }
 
   listeInstrument(): Observable<Instrument[]>{
-    let jwt = this.authService.getToken();
-    jwt = "Bearer "+jwt;
-    let httpHeaders = new HttpHeaders({"Authorization":jwt})
 
-     return this.http.get<Instrument[]>(this.apiURL+"/all",{headers:httpHeaders});
+     return this.http.get<Instrument[]>(this.apiURL+"/all");
 
     }
 

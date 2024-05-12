@@ -14,7 +14,8 @@ import { RechercheParNomComponent } from './recherche-par-nom/recherche-par-nom.
 import { SearchFilterPipe } from './search-filter.pipe';
 import { HttpClientModule } from '@angular/common/http';
 import { AuthService } from './services/auth.service';
-
+import { HTTP_INTERCEPTORS } from '@angular/common/http';
+import { TokenInterceptor } from './services/token.interceptor';
 
 @NgModule({
   declarations: [
@@ -34,7 +35,12 @@ import { AuthService } from './services/auth.service';
     FormsModule,
     HttpClientModule,
   ],
-  providers: [ AuthService,],
+  // providers: [ AuthService,],
+  providers: [{ provide : HTTP_INTERCEPTORS,
+    useClass : TokenInterceptor,
+    multi : true}
+     ],
+
   bootstrap: [AppComponent]
 })
 export class AppModule { }

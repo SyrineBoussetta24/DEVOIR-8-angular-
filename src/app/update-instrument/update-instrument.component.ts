@@ -26,7 +26,6 @@ subscribe(typs => {this.types = typs._embedded.types;
 console.log(typs);
 });
 
-
 this.instrumentService.consulterInstrument(this.activatedRoute.snapshot.params['id']).
 subscribe( instr =>{ this.currentInstrument = instr;
   this.updatedTypId =   this.currentInstrument?.type?.idTyp;
