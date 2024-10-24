@@ -1,0 +1,15 @@
+<form>
+  <div v [hidden]="ajout" >
+  <label>ID Type</label>
+  <input type="text" [(ngModel)]="type.idTyp" name="idType" class="form-control w-25">
+  </div>
+  <div>
+  <label>Nom type </label>
+  <input type="text" [(ngModel)]="type.nomTyp" name="nomType" class="form-control"
+  placeholder="Entrez un nom de type...">
+  </div>
+  <div class="mt-2">
+   <button type="submit" [disabled]="!type.nomTyp" class="btn btn-success"
+  (click)="saveType()" >{{ajout ? 'Ajouter' : 'Modifier'}}</button>
+  </div>
+  </form>

@@ -5,6 +5,8 @@ import { AuthService } from './auth.service';
 import { Instrument } from '../model/instrument.model';
 import { Type } from '../model/type.model';
 import { TypeWrapper } from '../model/typeWrapped.model';
+import { apiURL } from '../config';
+import { Image } from '../model/Image.model';
 
 const httpOptions = {
 headers: new HttpHeaders( {'Content-Type': 'application/json'} )
@@ -105,6 +107,36 @@ export class InstrumentService {
       return this.http.post<Type>(this.apiURLTyp, typ, httpOptions);
       }
 
+
+      uploadImage(file: File, filename: string): Observable<Image>{
+        const imageFormData = new FormData();
+        imageFormData.append('image', file, filename);
+        const url = `${apiURL + '/image/upload'}`;
+        return this.http.post<Image>(url, imageFormData);
+        }
+        loadImage(id: number): Observable<Image> {
+        const url = `${this.apiURL + '/image/get/info'}/${id}`;
+        return this.http.get<Image>(url);
+        }
+
+        uploadImageInstr(file: File, filename: string, idInstr:number): Observable<any>{
+          const imageFormData = new FormData();
+          imageFormData.append('image', file, filename);
+          const url = `${this.apiURL + '/image/uplaodImageInstr'}/${idInstr}`;
+          return this.http.post(url, imageFormData);
+          }
+
+          supprimerImage(id : number) {
+            const url = `${this.apiURL}/image/delete/${id}`;
+            return this.http.delete(url, httpOptions);
+            }
+
+            uploadImageFS(file: File, filename: string, idInstr : number): Observable<any>{
+              const imageFormData = new FormData();
+              imageFormData.append('image', file, filename);
+              const url = `${this.apiURL + '/image/uploadFS'}/${idInstr}`;
+              return this.http.post(url, imageFormData);
+              }
 
 
 }

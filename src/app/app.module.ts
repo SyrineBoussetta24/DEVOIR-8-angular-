@@ -5,7 +5,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { InstrumentsComponent } from './instruments/instruments.component';
 import { AddInstrumentComponent } from './add-instrument/add-instrument.component';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { UpdateInstrumentComponent } from './update-instrument/update-instrument.component';
 import { LoginComponent } from './login/login.component';
 import { ForbiddenComponent } from './forbidden/forbidden.component';
@@ -16,7 +16,12 @@ import { HttpClientModule } from '@angular/common/http';
 import { AuthService } from './services/auth.service';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { TokenInterceptor } from './services/token.interceptor';
-
+import { ListeTypesComponent } from './liste-types/liste-types.component';
+import { UpdateTypeComponent } from './update-type/update-type.component';
+import { RegisterComponent } from './register/register.component';
+import { VerifEmailComponent } from './verif-email/verif-email.component';
+import { ToastrModule } from 'ngx-toastr';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 @NgModule({
   declarations: [
     AppComponent,
@@ -28,12 +33,19 @@ import { TokenInterceptor } from './services/token.interceptor';
     RechercheParTypeComponent,
     RechercheParNomComponent,
     SearchFilterPipe,
+    ListeTypesComponent,
+    UpdateTypeComponent,
+    RegisterComponent,
+    VerifEmailComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
     HttpClientModule,
+    ReactiveFormsModule,
+    BrowserAnimationsModule,
+    ToastrModule.forRoot(), // ToastrModule added
   ],
   // providers: [ AuthService,],
   providers: [{ provide : HTTP_INTERCEPTORS,

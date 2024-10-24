@@ -2,7 +2,7 @@
   <div class="card shadow mb-4">
   <div class="card-body">
   <table class="table table-striped">
-  <tr> <th>Id</th><th>Nom</th> <th>Prix</th> <th>Date Création</th><th>Type</th> </tr>
+  <tr> <th>Id</th><th>Nom</th> <th>Prix</th> <th>Date Création</th><th>Type</th><th>Image</th></tr>
   <tbody *ngFor="let instrument of instruments">
   <tr >
   <td>{{instrument.idInstrument}}</td>
@@ -10,7 +10,10 @@
   <td>{{instrument.prixInstrument}}</td>
   <td>{{instrument.dateCreation | date:'dd/MM/yyyy'}}</td>
   <td>{{instrument?.type?.nomTyp}}</td>
-
+  <td><img class="card-img-top img-responsive"
+    src="{{apiurl+'/image/loadfromFS/'+instrument.idInstrument}}"
+    style = "height :50px;width:100px">
+    </td>
   <td><a *ngIf="authService.isAdmin()" class="btn btn-danger" (click)="supprimerInstrument(instrument)">Supprimer</a></td>
   <td><a *ngIf="authService.isAdmin()" class="btn btn-success" [routerLink]="['/updateInstrument',instrument.idInstrument]">Modifier</a></td>
   </tr>
